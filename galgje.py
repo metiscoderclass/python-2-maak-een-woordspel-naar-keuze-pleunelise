@@ -25,6 +25,10 @@ while True:
             print("Goed geraden!")
             print("Dit zij alle geraden letters: " + str(gl))
             print("Dit zijn je goed geraden letters: " + str(ggl))
+            if vraag1 in ggl:
+                gl.remove(vraag1)
+                ggl.remove(vraag1)
+                input("Je hebt dit woord al geraden, probeer het opnieuw:")
 
         elif vraag1 == "?":
             raad = input("Raad het woord:")
@@ -35,6 +39,54 @@ while True:
             print("Dit zijn je goed geraden letters: " + str(ggl))
             vraag2 = input("Fout, probeer het nog een keer:")
             fouten += 1
+            if fouten == 1:
+                print("""
+                          |
+                          |
+                          |
+                          |
+                          |
+                          | """)
+            elif fouten == 2:
+                print("""
+                          __________
+                         |
+                         |
+                         |
+                         |
+                         |
+                         |
+                         | """)
+            elif fouten == 3:
+                print("""
+                          __________
+                         |/
+                         |
+                         |
+                         |
+                         |
+                         |
+                         | """)
+            elif fouten == 4:
+                print("""
+                          __________
+                         |/   |
+                         |    
+                         |
+                         |
+                         |
+                         |
+                         | """)
+            elif fouten == 5:
+                print("""
+                          __________
+                         |/   |
+                         |   ( )
+                         |   \|/
+                         |    |
+                         |   / \
+                         |
+                         | """)
             if vraag2 in woord:
                 ggl.append(vraag2)
                 print("Goed geraden!")
