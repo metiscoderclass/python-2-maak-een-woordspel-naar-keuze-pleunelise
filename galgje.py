@@ -1,4 +1,5 @@
 woord = "zak"
+streepjes = "_","_","_"
 ggl = []
 gl = []
 fouten = 0
@@ -10,7 +11,6 @@ print ("""
           \___/ (__)(__)(____) \___/\____) (____)""")
 
 while True:
-    
     vraag1 =  input("Kies een letter of kies een ? om het woord te raden:")
     lengte = len(vraag1)
     lengtewoord = len(woord)
@@ -18,6 +18,8 @@ while True:
     if lengte > 1:
         input("Fout, probeer het nog een keer:")
         fouten += 1
+    elif vraag1 in gl or vraag1 in ggl:
+        print("Al geraden!")
     else:
 
         if vraag1 in woord:
@@ -25,13 +27,12 @@ while True:
             print("Goed geraden!")
             print("Dit zij alle geraden letters: " + str(gl))
             print("Dit zijn je goed geraden letters: " + str(ggl))
-            if vraag1 in ggl:
-                gl.remove(vraag1)
-                ggl.remove(vraag1)
-                input("Je hebt dit woord al geraden, probeer het opnieuw:")
 
         elif vraag1 == "?":
             raad = input("Raad het woord:")
+            if raad == woord:
+                print("Je hebt het woord goeg geraden!!")
+                break
 
         elif vraag1 not in woord:
             gl.append(vraag1)
@@ -40,19 +41,18 @@ while True:
             vraag2 = input("Fout, probeer het nog een keer:")
             print("Dit zij alle geraden letters: " + str(gl))
             print("Dit zijn je goed geraden letters: " + str(ggl))
-            if vraag1 in gl:
-                gl.remove(vraag1)
+        else:
             print("Druk op enter")
-            if fouten == 1:
-                print("""
+        if fouten == 1:
+            print("""
                           |
                           |
                           |
                           |
                           |
                           | """)
-            elif fouten == 2:
-                print("""
+        elif fouten == 2:
+            print("""
                           __________
                          |
                          |
@@ -61,8 +61,8 @@ while True:
                          |
                          |
                          | """)
-            elif fouten == 3:
-                print("""
+        elif fouten == 3:
+            print("""
                           __________
                          |/
                          |
@@ -71,8 +71,8 @@ while True:
                          |
                          |
                          | """)
-            elif fouten == 4:
-                print("""
+        elif fouten == 4:
+            print("""
                           __________
                          |/   |
                          |    
@@ -81,8 +81,8 @@ while True:
                          |
                          |
                          | """)
-            elif fouten == 5:
-                print("""
+        elif fouten == 5:
+            print("""
                           __________
                          |/   |
                          |   ( )
@@ -104,20 +104,12 @@ while True:
                 print("Dit zij alle geraden letters: " + str(gl))
                 print("Dit zijn je goed geraden letters: " + str(ggl))
                 fouten += 1
-                if vraag2 in gl:
-                    gl.remove(vraag2)
-                print("Druk op enter")
                 
             if fouten > 5:
                 einde = input("Je hebt 5 fouten kies kies stop om te stoppen:")
                 if einde == "stop":
                     break     
-            
-        if lengteggl == lengtewoord:
-            for l in woord:
-                kwoord = kwoord.replace(l,"")
-                print(kwoord)
-            raad = input("Raad het woord met alle goed geraden letters:")
+        
             if raad == woord:
                 print("Je hebt het woord goed geraden!")
                 break
